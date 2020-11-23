@@ -1,0 +1,14 @@
+package in.nmaloth.entity.account;
+
+public enum  BalanceTypes {
+
+    CURRENT_BALANCE,
+    CASH_BALANCE,
+    INSTALLMENT_BALANCE,
+    INSTALLMENT_CASH,
+    INTERNATIONAL,
+    INTERNATIONAL_CASH,
+    INTERNATIONAL_INSTALLMENT,
+    INTERNATIONAL_CASH_INSTALLMENT
+
+}
