@@ -2,10 +2,13 @@ package in.nmaloth.entity.card;
 
 public enum LimitType {
 
+    NO_SPECIFIC,
     RETAIL,
     CASH,
     OTC,
-    QUASI_CASH
+    ATM,
+    QUASI_CASH;
+
 
 
 

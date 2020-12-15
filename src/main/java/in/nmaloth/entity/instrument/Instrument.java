@@ -1,6 +1,7 @@
 package in.nmaloth.entity.instrument;
 
 import in.nmaloth.entity.BlockType;
+import in.nmaloth.entity.account.AccountDef;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.data.gemfire.mapping.annotation.Indexed;
 import org.springframework.data.gemfire.mapping.annotation.Region;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,13 +26,12 @@ public class Instrument  {
 
     private InstrumentType instrumentType;
 
+
     private boolean active;
 
     @Indexed
     private String cardNumber;
-    @Indexed
-    private String accountNumber;
-    @Indexed
+    private Set<AccountDef> accountDefSet;
     private String customerNumber;
 
     private String corporateNumber;
@@ -38,7 +40,6 @@ public class Instrument  {
     private LocalDate expiryDate;
     private int org;
     private int product;
-
 
 
 }

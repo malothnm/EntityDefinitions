@@ -4,16 +4,18 @@ import lombok.*;
 
 import java.util.Map;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
-public class PeriodicCardAccumulatedValue {
+
+public class PeriodicCardAmount {
 
     private LimitType limitType;
-    private Map<LimitType,Long> limitAmountMap ;
-    private Map<LimitType,Integer> limitNumberMap;
+    private Long transactionAmount;
+    private Integer transactionNumber;
 
 }

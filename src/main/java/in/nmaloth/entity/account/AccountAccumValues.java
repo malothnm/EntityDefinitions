@@ -1,9 +1,6 @@
 package in.nmaloth.entity.account;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.mapping.annotation.Indexed;
 import org.springframework.data.gemfire.mapping.annotation.Region;
@@ -15,12 +12,12 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 @Region("accountAccum")
 public class AccountAccumValues {
 
     @Id
-    private AccountKey accountKey;
+    private String  accountId;
 
     @Indexed
     private String accountNumber;

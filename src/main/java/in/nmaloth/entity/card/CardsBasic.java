@@ -1,14 +1,16 @@
 package in.nmaloth.entity.card;
 
 import in.nmaloth.entity.BlockType;
+import in.nmaloth.entity.account.AccountDef;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.mapping.annotation.Region;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,16 +26,25 @@ public class CardsBasic {
 
     private Integer product;
     private Integer org;
-    private String cardStatus;
-    private String cardholderType;
+    private CardStatus cardStatus;
+    private CardHolderType cardholderType;
     private BlockType blockType;
     private BlockType prevBlockType;
     private LocalDateTime dateBlockCode;
     private LocalDateTime datePrevBlockCode;
     private Integer waiverDaysActivation;
     private Integer cardReturnNumber;
-    private Map<LimitType,Long> cardLimits;
-    private Map<PeriodicType,PeriodicCardLimit>  periodicTypePeriodicCardLimitMap;
+
+    private String prevCardNumber;
+    private LocalDateTime dateTransfer;
+
+    private Set<AccountDef> accountDefSet;
+
+    private String customerNumber;
+    private String corporateNumber;
+
+
+    private Map<PeriodicType, Map<LimitType,PeriodicCardAmount>>  periodicTypePeriodicCardLimitMap;
 
 
     @Override

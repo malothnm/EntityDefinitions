@@ -30,8 +30,9 @@ public class Plastic {
     private LocalDateTime datePlasticIssued;
     private LocalDate dateCardValidFrom;
     private Duration activationWaiveDuration;
-    private String pendingCardAction;
-    private String cardAction;
+    private Boolean dynamicCVV;
+    private CardAction pendingCardAction;
+    private CardAction cardAction;
 
 
     @Override
