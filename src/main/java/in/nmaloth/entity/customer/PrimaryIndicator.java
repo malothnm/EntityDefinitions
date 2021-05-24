@@ -1,5 +1,11 @@
 package in.nmaloth.entity.customer;
 
+import in.nmaloth.entity.account.BalanceTypes;
+
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+
 public enum  PrimaryIndicator {
     PRIMARY(0),
     ADDITIONAL_1(1),
@@ -19,4 +25,8 @@ public enum  PrimaryIndicator {
     public  int getType(){
         return this.type;
     }
+
+
+
+
 }

@@ -1,7 +1,11 @@
 package in.nmaloth.entity.account;
 
 import lombok.*;
+import org.apache.geode.DataSerializable;
 
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.Objects;
 
 @NoArgsConstructor
@@ -9,7 +13,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Builder
-public class AccountDef {
+public class AccountDef implements DataSerializable {
 
     private String accountNumber;
     private AccountType accountType;
@@ -28,5 +32,21 @@ public class AccountDef {
     @Override
     public int hashCode() {
         return Objects.hash(getAccountNumber(), getAccountType(), getBillingCurrencyCode());
+    }
+
+    @Override
+    public void toData(DataOutput dataOutput) throws IOException {
+
+        dataOutput.writeUTF(accountNumber);
+        accountType.toData(dataOutput);
+        dataOutput.writeUTF(billingCurrencyCode);
+    }
+
+    @Override
+    public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
+
+        accountNumber = dataInput.readUTF();
+        accountType = AccountType.fromData(dataInput);
+        billingCurrencyCode = dataInput.readUTF();
     }
 }
