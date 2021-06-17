@@ -16,4 +16,8 @@ public class RegionNames {
     public static final String CARD_TEMP_BALANCE = "cardTempBalance";
     public static final String CUSTOMER_DEF = "customerDef";
     public static final String CURRENCY_CODE_MAPPING = "ccMapping";
+    public static final String VISA_BACKUP = "visaBackup";
+    public static final String SERVICE_RESPONSE_BACKUP = "service_response";
+    public static final String REPLAY_MESSAGES = "replay_messages";
+    public static final String SERVICE_RESPONSE_STATUS = "response_status";
 }
