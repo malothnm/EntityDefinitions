@@ -26,19 +26,21 @@ import java.util.List;
 public class ReplayRequest  implements DataSerializable {
 
     @Id
-    private String messageId;
+    private ServiceKey serviceKey;
+
     private String instanceId;
 
     @Override
     public void toData(DataOutput dataOutput) throws IOException {
-        dataOutput.writeUTF(messageId);
+        serviceKey.toData(dataOutput);
         dataOutput.writeUTF(instanceId);
     }
 
     @Override
     public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
 
-        messageId = dataInput.readUTF();
+        serviceKey = new ServiceKey();
+        serviceKey.fromData(dataInput);
         instanceId = dataInput.readUTF();
 
     }

@@ -1,9 +1,6 @@
 package in.nmaloth.entity.backups;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.apache.geode.DataSerializable;
 
 import java.io.DataInput;
@@ -15,7 +12,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 public class ServiceKey implements DataSerializable {
 
     private String id;

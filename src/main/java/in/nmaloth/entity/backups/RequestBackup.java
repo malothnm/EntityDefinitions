@@ -18,10 +18,10 @@ import java.io.IOException;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ReplicateRegion(name = RegionNames.VISA_BACKUP,ignoreIfExists = true)
+@ReplicateRegion(name = RegionNames.REQUEST_BACKUP,ignoreIfExists = true)
 @TimeToLiveExpiration(action = "DESTROY",timeout = "60")
 
-public class VisaRequestBackup implements DataSerializable {
+public class RequestBackup implements DataSerializable {
 
     @Id
     private String id;
