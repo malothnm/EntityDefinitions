@@ -20,4 +20,7 @@ public class RegionNames {
     public static final String SERVICE_RESPONSE_BACKUP = "service_response";
     public static final String REPLAY_MESSAGES = "replay_messages";
     public static final String SERVICE_RESPONSE_STATUS = "response_status";
+    public static final String INSTRUMENT_CRYPTO = "instrumentCrypto";
+    public static final String CHIP_PARAM = "chipParam";
+    public static final String CRYPTO_PARAM = "cryptoParam";
 }
