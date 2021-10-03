@@ -15,6 +15,7 @@ import java.io.IOException;
 public class ChipInfo implements DataSerializable {
 
     private String chipVersion;
+    private String iadFormat;
     private int chipSeq;
     private int atc;
 
@@ -22,6 +23,7 @@ public class ChipInfo implements DataSerializable {
     @Override
     public void toData(DataOutput dataOutput) throws IOException {
         dataOutput.writeUTF(chipVersion);
+        dataOutput.writeUTF(iadFormat);
         dataOutput.writeInt(chipSeq);
         dataOutput.writeInt(atc);
     }
@@ -30,6 +32,7 @@ public class ChipInfo implements DataSerializable {
     public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
 
         chipVersion = dataInput.readUTF();
+        iadFormat = dataInput.readUTF();
         chipSeq = dataInput.readInt();
         atc = dataInput.readInt();
     }

@@ -1,6 +1,5 @@
 package in.nmaloth.entity.card;
 
-import in.nmaloth.entity.account.BalanceTypes;
 import in.nmaloth.entity.exception.InvalidEnumConversion;
 import lombok.extern.slf4j.Slf4j;
 

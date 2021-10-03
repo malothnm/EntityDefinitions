@@ -22,6 +22,8 @@ public class InstrumentCrypto implements DataSerializable {
 
     @Id
     private String instrument;
+    private Integer cryptoOrg;
+    private Integer cryptoProduct;
     private List<CryptoInfo> cryptoInfoList;
     private List<ChipInfo> chipInfoList;
 
@@ -29,6 +31,8 @@ public class InstrumentCrypto implements DataSerializable {
     @Override
     public void toData(DataOutput dataOutput) throws IOException {
         dataOutput.writeUTF(instrument);
+        dataOutput.writeInt(cryptoOrg);
+        dataOutput.writeInt(cryptoProduct);
         dataOutput.writeInt(cryptoInfoList.size());
         if(cryptoInfoList.size() > 0){
             cryptoInfoList.forEach(cryptoInfo -> {
@@ -56,6 +60,8 @@ public class InstrumentCrypto implements DataSerializable {
     public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
 
         instrument = dataInput.readUTF();
+        cryptoOrg = dataInput.readInt();
+        cryptoProduct = dataInput.readInt();
         int length = dataInput.readInt();
         cryptoInfoList = new ArrayList<>();
         for (int i = 0; i < length; i ++ ){

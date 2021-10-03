@@ -52,7 +52,8 @@ public class Instrument  implements DataSerializable {
     private LocalDateTime expiryDate;
     private int org;
     private int product;
-
+    private int criteria;
+    private String domicileCountryCode;
 
     @Override
     public void toData(DataOutput dataOutput) throws IOException {
@@ -101,6 +102,8 @@ public class Instrument  implements DataSerializable {
         }
         dataOutput.writeInt(org);
         dataOutput.writeInt(product);
+        dataOutput.writeInt(criteria);
+        dataOutput.writeUTF(domicileCountryCode);
 
     }
 
@@ -157,6 +160,8 @@ public class Instrument  implements DataSerializable {
         }
         org = dataInput.readInt();
         product = dataInput.readInt();
+        criteria = dataInput.readInt();
+        domicileCountryCode = dataInput.readUTF();
 
     }
 }

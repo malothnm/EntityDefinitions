@@ -23,7 +23,6 @@ class InstrumentCryptoTest {
                 .expiryDate(LocalDate.now())
                 .pinOffset(10)
                 .serviceCode("201")
-                .pinBlockFormat(PinBlockFormat.ISO_1)
                 .dynamicCvv(true)
                 .build();
 
@@ -31,7 +30,6 @@ class InstrumentCryptoTest {
                 .expiryDate(LocalDate.now())
                 .pinOffset(105)
                 .serviceCode("101")
-                .pinBlockFormat(PinBlockFormat.ISO_2)
                 .dynamicCvv(false)
                 .build();
 
@@ -42,6 +40,8 @@ class InstrumentCryptoTest {
                 .instrument(UUID.randomUUID().toString())
                 .cryptoInfoList(cryptoInfoList)
                 .chipInfoList(new ArrayList<>())
+                .cryptoOrg(1)
+                .cryptoProduct(201)
                 .build();
                 ;
 
@@ -60,15 +60,15 @@ class InstrumentCryptoTest {
                 ()-> assertEquals(instrumentCrypto.getInstrument(),instrumentCrypto1.getInstrument()),
                 ()-> assertEquals(instrumentCrypto.getCryptoInfoList().size(),instrumentCrypto1.getCryptoInfoList().size()),
                 ()-> assertTrue(cryptoInfo1.getExpiryDate().isEqual(cryptoInfo_deserial1.getExpiryDate())),
-                ()-> assertEquals(cryptoInfo1.getPinBlockFormat(),cryptoInfo_deserial1.getPinBlockFormat()),
                 ()-> assertEquals(cryptoInfo1.getPinOffset(),cryptoInfo_deserial1.getPinOffset()),
                 ()-> assertEquals(cryptoInfo1.getServiceCode(),cryptoInfo_deserial1.getServiceCode()),
                 ()-> assertEquals(cryptoInfo1.isDynamicCvv(),cryptoInfo_deserial1.isDynamicCvv()),
                 ()-> assertTrue(cryptoInfo2.getExpiryDate().isEqual(cryptoInfo_deserial2.getExpiryDate())),
-                ()-> assertEquals(cryptoInfo2.getPinBlockFormat(),cryptoInfo_deserial2.getPinBlockFormat()),
                 ()-> assertEquals(cryptoInfo2.getPinOffset(),cryptoInfo_deserial2.getPinOffset()),
                 ()-> assertEquals(cryptoInfo2.getServiceCode(),cryptoInfo_deserial2.getServiceCode()),
-                ()-> assertEquals(cryptoInfo2.isDynamicCvv(),cryptoInfo_deserial2.isDynamicCvv())
+                ()-> assertEquals(cryptoInfo2.isDynamicCvv(),cryptoInfo_deserial2.isDynamicCvv()),
+                ()-> assertEquals(1,instrumentCrypto1.getCryptoOrg()),
+                ()-> assertEquals(201,instrumentCrypto1.getCryptoProduct())
         );
 
     }
@@ -81,12 +81,14 @@ class InstrumentCryptoTest {
         List<ChipInfo> chipInfoList = new ArrayList<>();
 
         ChipInfo chipInfo1 = ChipInfo.builder()
+                .iadFormat("0")
                 .chipSeq(1)
                 .chipVersion("MCHIP4")
                 .atc(100)
                 .build();
 
         ChipInfo chipInfo2 = ChipInfo.builder()
+                .iadFormat("2")
                 .chipSeq(2)
                 .chipVersion("MCHIP4")
                 .atc(200)
@@ -99,7 +101,6 @@ class InstrumentCryptoTest {
                 .expiryDate(LocalDate.now())
                 .pinOffset(10)
                 .serviceCode("201")
-                .pinBlockFormat(PinBlockFormat.ISO_1)
                 .dynamicCvv(true)
                 .build();
 
@@ -107,7 +108,6 @@ class InstrumentCryptoTest {
                 .expiryDate(LocalDate.now())
                 .pinOffset(105)
                 .serviceCode("101")
-                .pinBlockFormat(PinBlockFormat.ISO_2)
                 .dynamicCvv(false)
                 .build();
 
@@ -118,6 +118,8 @@ class InstrumentCryptoTest {
                 .instrument(UUID.randomUUID().toString())
                 .cryptoInfoList(cryptoInfoList)
                 .chipInfoList(chipInfoList)
+                .cryptoOrg(2)
+                .cryptoProduct(301)
                 .build();
         ;
 
@@ -138,21 +140,23 @@ class InstrumentCryptoTest {
                 ()-> assertEquals(instrumentCrypto.getInstrument(),instrumentCrypto1.getInstrument()),
                 ()-> assertEquals(instrumentCrypto.getCryptoInfoList().size(),instrumentCrypto1.getCryptoInfoList().size()),
                 ()-> assertTrue(cryptoInfo1.getExpiryDate().isEqual(cryptoInfo_deserial1.getExpiryDate())),
-                ()-> assertEquals(cryptoInfo1.getPinBlockFormat(),cryptoInfo_deserial1.getPinBlockFormat()),
                 ()-> assertEquals(cryptoInfo1.getPinOffset(),cryptoInfo_deserial1.getPinOffset()),
                 ()-> assertEquals(cryptoInfo1.getServiceCode(),cryptoInfo_deserial1.getServiceCode()),
                 ()-> assertEquals(cryptoInfo1.isDynamicCvv(),cryptoInfo_deserial1.isDynamicCvv()),
                 ()-> assertTrue(cryptoInfo2.getExpiryDate().isEqual(cryptoInfo_deserial2.getExpiryDate())),
-                ()-> assertEquals(cryptoInfo2.getPinBlockFormat(),cryptoInfo_deserial2.getPinBlockFormat()),
                 ()-> assertEquals(cryptoInfo2.getPinOffset(),cryptoInfo_deserial2.getPinOffset()),
                 ()-> assertEquals(cryptoInfo2.getServiceCode(),cryptoInfo_deserial2.getServiceCode()),
                 ()-> assertEquals(cryptoInfo2.isDynamicCvv(),cryptoInfo_deserial2.isDynamicCvv()),
                 ()-> assertEquals(chipInfo1.getChipSeq(),chipInfo_deserialise1.getChipSeq()),
                 ()-> assertEquals(chipInfo1.getChipVersion(),chipInfo_deserialise1.getChipVersion()),
                 ()-> assertEquals(chipInfo1.getAtc(),chipInfo_deserialise1.getAtc()),
+                ()-> assertEquals(chipInfo1.getIadFormat(),chipInfo_deserialise1.getIadFormat()),
                 ()-> assertEquals(chipInfo2.getChipSeq(),chipInfo_deserialise2.getChipSeq()),
                 ()-> assertEquals(chipInfo2.getChipVersion(),chipInfo_deserialise2.getChipVersion()),
-                ()-> assertEquals(chipInfo2.getAtc(),chipInfo_deserialise2.getAtc())
+                ()-> assertEquals(chipInfo2.getAtc(),chipInfo_deserialise2.getAtc()),
+                ()-> assertEquals(2,instrumentCrypto1.getCryptoOrg()),
+                ()-> assertEquals(301,instrumentCrypto1.getCryptoProduct()),
+                ()-> assertEquals(chipInfo2.getIadFormat(),chipInfo_deserialise2.getIadFormat())
         );
 
     }

@@ -141,6 +141,8 @@ class InstrumentTest {
                 .instrumentType(InstrumentType.PLASTIC_DEBIT)
                 .org(1)
                 .product(201)
+                .criteria(100)
+                .domicileCountryCode("484")
                 .build();
     }
 

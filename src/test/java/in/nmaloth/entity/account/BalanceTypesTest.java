@@ -11,7 +11,7 @@ class BalanceTypesTest {
     @Test
     void serialization() throws IOException, ClassNotFoundException {
 
-        BalanceTypes balanceTypes = BalanceTypes.INTERNATIONAL;
+        BalanceTypes balanceTypes = BalanceTypes.CURRENT_BALANCE;
 
         DataOutputStream dataOutput = new DataOutputStream(new FileOutputStream("src/test/resources/serial.txt"));
 

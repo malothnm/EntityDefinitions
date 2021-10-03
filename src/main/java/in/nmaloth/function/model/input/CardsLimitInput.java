@@ -1,6 +1,5 @@
 package in.nmaloth.function.model.input;
 
-import in.nmaloth.entity.account.BalanceTypes;
 import in.nmaloth.entity.card.LimitType;
 import lombok.*;
 import org.apache.geode.DataSerializable;

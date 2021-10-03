@@ -19,11 +19,9 @@ import java.util.BitSet;
 public class CryptoInfo implements DataSerializable {
 
     private String serviceCode;
-    private PinBlockFormat pinBlockFormat;
     private LocalDate expiryDate;
     private int pinOffset;
     private boolean dynamicCvv;
-    private String chipVersion;
 
     @Override
     public void toData(DataOutput dataOutput) throws IOException {
@@ -31,7 +29,6 @@ public class CryptoInfo implements DataSerializable {
 
 
         dataOutput.writeUTF(serviceCode);
-        dataOutput.writeUTF(pinBlockFormat.getPinBlockFormat());
         dataOutput.writeUTF(expiryDate.format(DateTimeFormatter.ISO_DATE));
         dataOutput.writeInt(pinOffset);
         dataOutput.writeBoolean(dynamicCvv);
@@ -47,10 +44,10 @@ public class CryptoInfo implements DataSerializable {
 
 
         serviceCode = dataInput.readUTF();
-        pinBlockFormat = PinBlockFormat.identify(dataInput.readUTF());
         expiryDate = LocalDate.parse(dataInput.readUTF(),DateTimeFormatter.ISO_DATE);
         pinOffset = dataInput.readInt();
         dynamicCvv = dataInput.readBoolean();
+
 
     }
 

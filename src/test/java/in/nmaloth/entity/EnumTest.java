@@ -132,7 +132,7 @@ class EnumTest {
     @Test
     void getBalanceTypes() {
 
-        String[] testValues = {"0","1","2","3","4","5","6","7"};
+        String[] testValues = {"0","1","2","3"};
         BalanceTypes[] balanceTypes = new BalanceTypes[testValues.length];
         for (int i = 0; i < testValues.length ; i ++ ) {
             balanceTypes[i] = BalanceTypes.identify(testValues[i]);

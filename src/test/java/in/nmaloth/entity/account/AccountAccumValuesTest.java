@@ -32,7 +32,6 @@ class AccountAccumValuesTest {
                 ()-> assertEquals(accountAccumValues.getProduct(),accountAccumValues1.getProduct()),
                 ()-> assertEquals(accountAccumValues.getBalancesMap().size(),accountAccumValues1.getBalancesMap().size()),
                 ()-> assertEquals(accountAccumValues.getLimitsMap().size(),accountAccumValues1.getLimitsMap().size()),
-                ()-> assertEquals(accountAccumValues.getLimitsMap().get(BalanceTypes.INTERNATIONAL),accountAccumValues1.getLimitsMap().get(BalanceTypes.INTERNATIONAL)),
                 ()-> assertEquals(accountAccumValues.getBalancesMap().get(BalanceTypes.INSTALLMENT_BALANCE).getPostedBalance(),
                         accountAccumValues1.getBalancesMap().get(BalanceTypes.INSTALLMENT_BALANCE).getPostedBalance()),
                 ()-> assertEquals(accountAccumValues.getBalancesMap().get(BalanceTypes.CURRENT_BALANCE).getMemoCr(),
@@ -63,8 +62,7 @@ class AccountAccumValuesTest {
                 ()-> assertEquals(accountAccumValues1.getOrg(),accountAccumValues1.getOrg()),
                 ()-> assertEquals(accountAccumValues.getProduct(),accountAccumValues1.getProduct()),
                 ()-> assertNull(accountAccumValues1.getBalancesMap()),
-                ()-> assertEquals(accountAccumValues.getLimitsMap().size(),accountAccumValues1.getLimitsMap().size()),
-                ()-> assertEquals(accountAccumValues.getLimitsMap().get(BalanceTypes.INTERNATIONAL),accountAccumValues1.getLimitsMap().get(BalanceTypes.INTERNATIONAL))
+                ()-> assertEquals(accountAccumValues.getLimitsMap().size(),accountAccumValues1.getLimitsMap().size())
 
         );
     }
@@ -132,7 +130,6 @@ class AccountAccumValuesTest {
 
         balanceLimitMap.put(BalanceTypes.CURRENT_BALANCE,100000L);
         balanceLimitMap.put(BalanceTypes.CASH_BALANCE,50000L);
-        balanceLimitMap.put(BalanceTypes.INTERNATIONAL,70000L);
         balanceLimitMap.put(BalanceTypes.INSTALLMENT_BALANCE,80000L);
 
 
@@ -166,7 +163,6 @@ class AccountAccumValuesTest {
 
         accountBalancesMap.put(BalanceTypes.CURRENT_BALANCE,accountBalances4);
         accountBalancesMap.put(BalanceTypes.CASH_BALANCE,accountBalances3);
-        accountBalancesMap.put(BalanceTypes.INTERNATIONAL,accountBalances2);
         accountBalancesMap.put(BalanceTypes.INSTALLMENT_BALANCE,accountBalances1);
 
 

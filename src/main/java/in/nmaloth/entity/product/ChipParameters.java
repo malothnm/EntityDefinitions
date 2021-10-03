@@ -1,10 +1,7 @@
 package in.nmaloth.entity.product;
 
 import in.nmaloth.entity.RegionNames;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.apache.geode.DataSerializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.ScopeType;
@@ -19,15 +16,17 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 @ReplicateRegion(name = RegionNames.CHIP_PARAM,scope = ScopeType.DISTRIBUTED_ACK)
 public class ChipParameters /* implements DataSerializable */  {
 
     @Id
     private ChipKey chipKey;
 
-    private boolean[] tvrApproveDecline;
-    private boolean[] cvrApproveDecline;
+    private boolean decideOnTvr;
+    private byte[] tvrApproveDecline;
+    private boolean decideOnCvr;
+    private byte[] cvrApproveDecline;
 
 
 //    @Override

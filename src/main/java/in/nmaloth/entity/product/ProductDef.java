@@ -3,15 +3,11 @@ package in.nmaloth.entity.product;
 import in.nmaloth.entity.RegionNames;
 import in.nmaloth.entity.account.AccountType;
 import in.nmaloth.entity.account.BalanceTypes;
-import in.nmaloth.entity.card.LimitType;
-import in.nmaloth.entity.card.PeriodicType;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.ScopeType;
-import org.springframework.data.gemfire.mapping.annotation.Region;
 import org.springframework.data.gemfire.mapping.annotation.ReplicateRegion;
 
-import java.util.List;
 import java.util.Map;
 
 
@@ -20,11 +16,11 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-@ReplicateRegion(name = RegionNames.PRODUCT_DEF,scope = ScopeType.DISTRIBUTED_ACK)
+@ReplicateRegion(name = RegionNames.PRODUCT_DEF, scope = ScopeType.DISTRIBUTED_ACK)
 
 public class ProductDef {
 
-   @Id
+    @Id
     private ProductId productId;
 
     private Integer cardsValidityMonthNew;
@@ -36,10 +32,16 @@ public class ProductDef {
     private Integer cardsReturn;
     private Boolean cardsActivationRequired;
     private Integer serviceCode;
-    private Map<BalanceTypes,Long> limitPercents;
+    private Map<BalanceTypes, Long> limitPercents;
     private AccountType primaryAccountType;
     private String billingCurrencyCode;
     private boolean expiryDateMMYY;
+
+    private boolean blockInstallments;
+    private boolean blockCashBack;
+    private boolean blockInternational;
+    private boolean supportAVS;
+
 
 
 }
