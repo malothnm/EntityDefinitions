@@ -46,5 +46,9 @@ public class ProductAuthCriteria {
     private IncludeExclude blockTerminalTypes;
     private List<BlockingTerminalType> terminalTypesBlocked;
 
+    private boolean blockInstallments;
+    private boolean blockCashBack;
+    private boolean blockInternational;
+
 
 }

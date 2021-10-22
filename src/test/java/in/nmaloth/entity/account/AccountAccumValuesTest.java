@@ -37,7 +37,8 @@ class AccountAccumValuesTest {
                 ()-> assertEquals(accountAccumValues.getBalancesMap().get(BalanceTypes.CURRENT_BALANCE).getMemoCr(),
                         accountAccumValues1.getBalancesMap().get(BalanceTypes.CURRENT_BALANCE).getMemoCr()),
                 ()-> assertEquals(accountAccumValues.getBalancesMap().get(BalanceTypes.CASH_BALANCE).getMemoDb(),
-                        accountAccumValues1.getBalancesMap().get(BalanceTypes.CASH_BALANCE).getMemoDb())
+                        accountAccumValues1.getBalancesMap().get(BalanceTypes.CASH_BALANCE).getMemoDb()),
+                ()-> assertEquals(accountAccumValues.getAccountType(),accountAccumValues1.getAccountType())
         );
     }
 
@@ -170,6 +171,7 @@ class AccountAccumValuesTest {
                 .accountId(UUID.randomUUID().toString().replace("-", ""))
                 .org(1)
                 .product(201)
+                .accountType(AccountType.CREDIT)
                 .blockType(BlockType.BLOCK_SUSPECTED_FRAUD)
                 ;
 

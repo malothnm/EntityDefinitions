@@ -3,6 +3,7 @@ package in.nmaloth.entity.card;
 import in.nmaloth.entity.RegionNames;
 import lombok.*;
 import org.apache.geode.DataSerializable;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.ScopeType;
 import org.springframework.data.gemfire.config.annotation.EnableExpiration;
@@ -22,8 +23,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ReplicateRegion(name = RegionNames.CARD_TEMP_BALANCE,ignoreIfExists = true)
-@TimeToLiveExpiration(action = "DESTROY",timeout = "60")
+@PartitionRegion(name = RegionNames.CARD_TEMP_BALANCE,ignoreIfExists = true,
+        collocatedWith = RegionNames.CARDS_BASIC)
+
 public class CardTempBalance  implements DataSerializable {
 
     @Id

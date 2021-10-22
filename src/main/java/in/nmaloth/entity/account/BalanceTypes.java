@@ -13,7 +13,11 @@ public enum  BalanceTypes  {
     CURRENT_BALANCE("0"),
     CASH_BALANCE("1"),
     INSTALLMENT_BALANCE("2"),
-    INSTALLMENT_CASH("3");
+    INSTALLMENT_CASH("3"),
+    INTERNATIONAL_CURRENT_BALANCE("4"),
+    INTERNATIONAL_CASH_BALANCE("5"),
+    INTERNATIONAL_INSTALLMENT_BALANCE("6"),
+    INTERNATIONAL_INSTALLMENT_CASH("7");
 
     private String balanceTypes;
 
@@ -38,6 +42,18 @@ public enum  BalanceTypes  {
             }
             case "3": {
                 return BalanceTypes.INSTALLMENT_CASH;
+            }
+            case "4": {
+                return BalanceTypes.INTERNATIONAL_CURRENT_BALANCE;
+            }
+            case "5": {
+                return BalanceTypes.INTERNATIONAL_CASH_BALANCE;
+            }
+            case "6": {
+                return BalanceTypes.INTERNATIONAL_INSTALLMENT_BALANCE;
+            }
+            case "7": {
+                return BalanceTypes.INTERNATIONAL_INSTALLMENT_CASH;
             }
             default: {
                 log.error(" Invalid Balance Type : {}",balanceTypes);

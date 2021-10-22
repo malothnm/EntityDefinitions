@@ -20,6 +20,7 @@ import java.util.List;
 public class CardsLimitInput implements DataSerializable {
 
     private String messageId;
+    private String cardId;
     private String messageTypeId;
     private long transactionAmount;
     private boolean debit;
@@ -28,6 +29,7 @@ public class CardsLimitInput implements DataSerializable {
     @Override
     public void toData(DataOutput dataOutput) throws IOException {
         dataOutput.writeUTF(messageId);
+        dataOutput.writeUTF(cardId);
         dataOutput.writeUTF(messageTypeId);
         dataOutput.writeLong(transactionAmount);
         dataOutput.writeBoolean(debit);
@@ -46,6 +48,7 @@ public class CardsLimitInput implements DataSerializable {
     public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
 
         messageId = dataInput.readUTF();
+        cardId = dataInput.readUTF();
         messageTypeId = dataInput.readUTF();
         transactionAmount = dataInput.readLong();
         debit = dataInput.readBoolean();

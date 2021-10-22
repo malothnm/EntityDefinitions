@@ -23,10 +23,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ReplicateRegion(name = RegionNames.ACCT_TEMP_BALANCE,ignoreIfExists = true)
-@TimeToLiveExpiration(action = "DESTROY",timeout = "60")
+@PartitionRegion(name = RegionNames.ACCT_TEMP_BALANCE,ignoreIfExists = true,collocatedWith =  RegionNames.ACCOUNT_LIMIT)
 public class AccountTempBalance implements DataSerializable {
-
 
     @Id
     private String id;

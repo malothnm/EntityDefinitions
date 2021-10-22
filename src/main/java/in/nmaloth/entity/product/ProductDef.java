@@ -23,23 +23,20 @@ public class ProductDef {
     @Id
     private ProductId productId;
 
-    private Integer cardsValidityMonthNew;
-    private Integer cardsValidityMonthReplace;
-    private Integer cardsValidityMonthReIssue;
-    private Integer dateRangeNewExpDate;
-    private Integer cardsWaiverActivationDays;
-    private Integer daysToCardsValid;
-    private Integer cardsReturn;
-    private Boolean cardsActivationRequired;
-    private Integer serviceCode;
-    private Map<BalanceTypes, Long> limitPercents;
+//    private Integer cardsValidityMonthNew;
+//    private Integer cardsValidityMonthReplace;
+//    private Integer cardsValidityMonthReIssue;
+//    private Integer dateRangeNewExpDate;
+//    private Integer cardsWaiverActivationDays;
+//    private Integer daysToCardsValid;
+//    private Integer cardsReturn;
+//    private Boolean cardsActivationRequired;
+//    private Integer serviceCode;
+//    private Map<BalanceTypes, Long> limitPercents;
     private AccountType primaryAccountType;
     private String billingCurrencyCode;
     private boolean expiryDateMMYY;
 
-    private boolean blockInstallments;
-    private boolean blockCashBack;
-    private boolean blockInternational;
     private boolean supportAVS;
 
 

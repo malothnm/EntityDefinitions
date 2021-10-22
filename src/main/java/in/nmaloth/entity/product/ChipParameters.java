@@ -24,8 +24,10 @@ public class ChipParameters /* implements DataSerializable */  {
     private ChipKey chipKey;
 
     private boolean decideOnTvr;
+    private int tvrLength;
     private byte[] tvrApproveDecline;
     private boolean decideOnCvr;
+    private int cvrLength;
     private byte[] cvrApproveDecline;
 
 

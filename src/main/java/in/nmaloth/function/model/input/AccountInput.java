@@ -1,6 +1,7 @@
 package in.nmaloth.function.model.input;
 
 import in.nmaloth.entity.account.BalanceTypes;
+import in.nmaloth.payments.constants.International;
 import lombok.*;
 import org.apache.geode.DataSerializable;
 
@@ -19,10 +20,12 @@ import java.util.List;
 public class AccountInput implements DataSerializable {
 
     private String messageId;
+    private String accountId;
     private String messageTypeId;
     private long transactionAmount;
     private boolean debit;
     private List<BalanceTypes> balanceTypesList;
+    private International international;
 
 
 
@@ -30,6 +33,7 @@ public class AccountInput implements DataSerializable {
     public void toData(DataOutput dataOutput) throws IOException {
 
         dataOutput.writeUTF(messageId);
+        dataOutput.writeUTF(accountId);
         dataOutput.writeUTF(messageTypeId);
         dataOutput.writeLong(transactionAmount);
         dataOutput.writeBoolean(debit);
@@ -41,6 +45,7 @@ public class AccountInput implements DataSerializable {
                 e.printStackTrace();
             }
         });
+        dataOutput.writeUTF(international.getInternational());
 
     }
 
@@ -48,6 +53,7 @@ public class AccountInput implements DataSerializable {
     public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
 
         messageId = dataInput.readUTF();
+        accountId = dataInput.readUTF();
         messageTypeId = dataInput.readUTF();
         transactionAmount = dataInput.readLong();
         debit = dataInput.readBoolean();
@@ -56,6 +62,7 @@ public class AccountInput implements DataSerializable {
         for(int i = 0; i < balanceTypeListArraySize; i ++ ){
             balanceTypesList.add(BalanceTypes.fromData(dataInput));
         }
+        international = International.identify(dataInput.readUTF());
 
     }
 }

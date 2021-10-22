@@ -2,7 +2,11 @@ package in.nmaloth.entity.product;
 
 import in.nmaloth.entity.account.BalanceTypes;
 import lombok.*;
+import org.apache.geode.DataSerializable;
 
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.Objects;
 
 @Getter
@@ -10,7 +14,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BlockingBalanceType implements Comparable<BlockingBalanceType> {
+public class BlockingBalanceType implements Comparable<BlockingBalanceType>, DataSerializable {
 
     private InternationalApplied internationalApplied;
     private BalanceTypes balanceTypes;
@@ -32,5 +36,17 @@ public class BlockingBalanceType implements Comparable<BlockingBalanceType> {
     public int compareTo(BlockingBalanceType o) {
 
         return this.balanceTypes.compareTo(o.getBalanceTypes());
+    }
+
+    @Override
+    public void toData(DataOutput dataOutput) throws IOException {
+        dataOutput.writeUTF(internationalApplied.getBlockInternational());
+        dataOutput.writeUTF(balanceTypes.getBalanceTypes());
+    }
+
+    @Override
+    public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
+        internationalApplied = InternationalApplied.identify(dataInput.readUTF());
+        balanceTypes = BalanceTypes.identify(dataInput.readUTF());
     }
 }

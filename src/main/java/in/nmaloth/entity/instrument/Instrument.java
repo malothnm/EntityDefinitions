@@ -28,7 +28,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @PartitionRegion(name = RegionNames.INSTRUMENT,redundantCopies = 1)
-public class Instrument  implements DataSerializable {
+public class Instrument  {
 
     @Id
     private String instrumentNumber;
@@ -54,8 +54,8 @@ public class Instrument  implements DataSerializable {
     private int product;
     private int criteria;
     private String domicileCountryCode;
+    private List<String> plasticIdList;
 
-    @Override
     public void toData(DataOutput dataOutput) throws IOException {
         BitSet bitSet = new BitSet(32);
 
@@ -124,7 +124,6 @@ public class Instrument  implements DataSerializable {
 
     }
 
-    @Override
     public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
 
         byte[] bytes = new byte[4];

@@ -2,7 +2,11 @@ package in.nmaloth.entity.product;
 
 import in.nmaloth.payments.constants.TransactionType;
 import lombok.*;
+import org.apache.geode.DataSerializable;
 
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.Objects;
 
 @Getter
@@ -10,7 +14,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BlockingTransactionType implements Comparable<BlockingTransactionType> {
+public class BlockingTransactionType implements Comparable<BlockingTransactionType>, DataSerializable {
 
     private InternationalApplied internationalApplied;
     private TransactionType transactionType;
@@ -33,5 +37,18 @@ public class BlockingTransactionType implements Comparable<BlockingTransactionTy
 
         return this.transactionType.compareTo(o.getTransactionType());
 
+    }
+
+    @Override
+    public void toData(DataOutput dataOutput) throws IOException {
+
+        dataOutput.writeUTF(internationalApplied.getBlockInternational());
+        dataOutput.writeUTF(transactionType.getTransactionType());
+    }
+
+    @Override
+    public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
+        internationalApplied = InternationalApplied.identify(dataInput.readUTF());
+        transactionType = TransactionType.identify(dataInput.readUTF());
     }
 }

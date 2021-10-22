@@ -23,7 +23,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@PartitionRegion(name = RegionNames.CARD_LIMIT)
+@PartitionRegion(name = RegionNames.CARD_LIMIT,collocatedWith = RegionNames.CARDS_BASIC)
 public class CardAccumulatedValues implements DataSerializable {
 
     @Id

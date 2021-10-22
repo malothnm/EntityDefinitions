@@ -2,7 +2,11 @@ package in.nmaloth.entity.product;
 
 import in.nmaloth.entity.card.LimitType;
 import lombok.*;
+import org.apache.geode.DataSerializable;
 
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.Objects;
 
 @Getter
@@ -11,7 +15,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 
-public class BlockingLimitType implements Comparable<BlockingLimitType> {
+public class BlockingLimitType implements Comparable<BlockingLimitType> , DataSerializable {
 
     private InternationalApplied internationalApplied;
     private LimitType limitType;
@@ -33,5 +37,17 @@ public class BlockingLimitType implements Comparable<BlockingLimitType> {
     @Override
     public int compareTo(BlockingLimitType o) {
         return this.limitType.compareTo(o.getLimitType());
+    }
+
+    @Override
+    public void toData(DataOutput dataOutput) throws IOException {
+        dataOutput.writeUTF(internationalApplied.getBlockInternational());
+        dataOutput.writeUTF(limitType.getLimitType());
+    }
+
+    @Override
+    public void fromData(DataInput dataInput) throws IOException, ClassNotFoundException {
+        internationalApplied = InternationalApplied.identify(dataInput.readUTF());
+        limitType = LimitType.identify(dataInput.readUTF());
     }
 }

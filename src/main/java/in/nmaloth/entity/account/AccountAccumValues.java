@@ -26,6 +26,7 @@ public class AccountAccumValues implements DataSerializable{
     private String  accountId;
     private int org;
     private int product;
+    private AccountType accountType;
     private BlockType blockType;
     private Map<BalanceTypes,Long> limitsMap;
     private Map<BalanceTypes,AccountBalances> balancesMap;
@@ -51,6 +52,7 @@ public class AccountAccumValues implements DataSerializable{
         dataOutput.writeUTF(accountId);
         dataOutput.writeInt(org);
         dataOutput.writeInt(product);
+        dataOutput.writeUTF(accountType.getAccountType());
         blockType.toData(dataOutput);
         if(limitsMap != null){
             dataOutput.writeInt(limitsMap.size());
@@ -101,6 +103,7 @@ public class AccountAccumValues implements DataSerializable{
         this.accountId = dataInput.readUTF();
         this.org = dataInput.readInt();
         this.product = dataInput.readInt();
+        this.accountType = AccountType.identify(dataInput.readUTF());
         this.blockType = BlockType.fromData(dataInput);
         if(bitSet.get(0)){
 
